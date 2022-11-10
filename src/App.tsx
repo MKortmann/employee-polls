@@ -7,7 +7,6 @@ import { Login } from './components/pages/Login'
 function App() {
 	return (
 		<div className='App'>
-			Employee Poll App
 			<Login />
 		</div>
 	)

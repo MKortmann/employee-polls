@@ -5,6 +5,8 @@ import { store } from './redux/store'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './index.scss'
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
