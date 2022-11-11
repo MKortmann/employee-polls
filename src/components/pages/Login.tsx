@@ -6,18 +6,25 @@ import loginImage from '../../img/login.jpg'
 import { css } from '@emotion/css'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchUsers, getUsers } from '../../redux/slices/usersSlice'
+import {
+	fetchUsers,
+	updateLogUser,
+	getUserStatus,
+	getUsers,
+} from '../../redux/slices/usersSlice'
+
 import type { AppDispatch } from '../../redux/store'
-import { User, Users } from '../../types/users'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {}
 
 export const Login: React.FC<Props> = () => {
 	const dispatch = useDispatch<AppDispatch>()
+	const navigate = useNavigate()
 
 	//@ts-ignore
-	const users = useSelector((state: any) => state.users.users)
-	const status = useSelector((state: any) => state.users.status)
+	const users = useSelector(getUsers)
+	const status = useSelector(getUserStatus)
 
 	useEffect(() => {
 		if (status === 'idle') {
@@ -25,8 +32,13 @@ export const Login: React.FC<Props> = () => {
 		}
 	}, [])
 
+	const selectUser = (userId: string) => {
+		dispatch(updateLogUser(userId))
+		navigate('/home')
+	}
+
 	const usersOptions = Object.entries(users).map((user: any) => (
-		<Dropdown.Item key={user[1].id} onClick={() => console.log(user[1].id)}>
+		<Dropdown.Item key={user[1].id} onClick={() => selectUser(user[1].id)}>
 			{user[0]}
 		</Dropdown.Item>
 	))

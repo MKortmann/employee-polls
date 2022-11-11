@@ -3,5 +3,9 @@ import React from 'react'
 interface Props {}
 
 export const Home: React.FC<Props> = () => {
-	return <div>Home Page</div>
+	return (
+		<>
+			<div>Home Page</div>
+		</>
+	)
 }
