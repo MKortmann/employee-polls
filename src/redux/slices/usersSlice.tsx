@@ -18,9 +18,8 @@ const initialState: any = {
 	status: 'idle',
 }
 
-export const fetchUsers = createAsyncThunk('', async () => {
+export const fetchUsers = createAsyncThunk('/fetch/users', async () => {
 	const response = await _getUsers()
-	console.log(response)
 	return response
 })
 
@@ -36,13 +35,12 @@ export const usersSlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(fetchUsers.pending, (state) => {
-				state.status = 'loading'
 				console.log('loading')
+				state.status = 'loading'
 			})
 			.addCase(fetchUsers.fulfilled, (state, action) => {
-				state.status = 'idle'
 				console.log('idle')
-				console.log(action.payload)
+				state.status = 'idle'
 				state.users = action.payload
 			})
 	},

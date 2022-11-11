@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Accordion from 'react-bootstrap/Accordion'
 import Row from 'react-bootstrap/Row'
 import { Pool } from '../index'
+import { useSelector } from 'react-redux'
 
 interface Props {
 	header: string

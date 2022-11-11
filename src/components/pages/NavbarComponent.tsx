@@ -76,13 +76,12 @@ export const NavbarComponent: React.FC<Props> = () => {
 					`}>
 					<img
 						alt='avatar'
-						// src='/mk.svg'
 						src={avatar}
 						width='45'
 						height='30'
 						className='d-inline-block align-top'
 					/>{' '}
-					{user[0][1]?.name}
+					{user?.[0]?.[1]?.name}
 				</Navbar.Brand>
 			</Navbar>
 		</>
