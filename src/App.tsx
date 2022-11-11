@@ -1,9 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './App.scss'
-import { Login } from './components/pages/Login'
-import { Home } from './components/pages/Home'
-import { NavbarComponent } from './components/pages/Nav'
+import { Login, Home, NavbarComponent } from './components/index'
 import { useSelector } from 'react-redux'
 
 function App() {
