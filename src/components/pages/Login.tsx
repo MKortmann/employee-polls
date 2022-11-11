@@ -22,7 +22,6 @@ export const Login: React.FC<Props> = () => {
 	const dispatch = useDispatch<AppDispatch>()
 	const navigate = useNavigate()
 
-	//@ts-ignore
 	const users = useSelector(getUsers)
 	const status = useSelector(getUserStatus)
 
