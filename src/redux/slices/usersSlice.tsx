@@ -2,6 +2,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { _getUsers } from '../../API/_DATA'
 import { Users } from '../../types/users'
 
+import avatarSarahedo from '../../avatars/sarahedo.svg'
+import avatarTyler from '../../avatars/tylermcginnis.svg'
+import avatarMtsamis from '../../avatars/mtsamis.svg'
+import avatarZoshikanlu from '../../avatars/zoshikanlu.svg'
+
 interface State {
 	users: Users
 	status: string
@@ -56,3 +61,17 @@ export const getLoggedUser = (state: any) =>
 			return user[1].id === state.users.loggedUser
 		})
 		.map((user) => user)
+
+export const getAvatarComponent = (state: any) =>
+	Object.entries(state.users.users)
+		.filter((user: any) => {
+			return user[1].id === state.users.loggedUser
+		})
+		.map((user: any) => getAvatar[user[1].id])
+
+const getAvatar: Record<any, any> = {
+	sarahedo: avatarSarahedo,
+	tylermcginnis: avatarTyler,
+	mtsamis: avatarMtsamis,
+	zoshikanlu: avatarZoshikanlu,
+}

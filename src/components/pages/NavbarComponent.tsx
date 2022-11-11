@@ -5,13 +5,17 @@ import Nav from 'react-bootstrap/Nav'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { css, cx } from '@emotion/css'
 import { useSelector } from 'react-redux'
-import { getLoggedUser } from '../../redux/slices/usersSlice'
+import {
+	getLoggedUser,
+	getAvatarComponent,
+} from '../../redux/slices/usersSlice'
 
 interface Props {}
 export const NavbarComponent: React.FC<Props> = () => {
 	const style = subNavStyles()
 
 	const user: any = useSelector(getLoggedUser)
+	const avatar: any = useSelector(getAvatarComponent)
 
 	return (
 		<>
@@ -71,8 +75,9 @@ export const NavbarComponent: React.FC<Props> = () => {
 						margin-right: 30px;
 					`}>
 					<img
-						alt='mk.svg'
-						src='/mk.svg'
+						alt='avatar'
+						// src='/mk.svg'
+						src={avatar}
 						width='45'
 						height='30'
 						className='d-inline-block align-top'
