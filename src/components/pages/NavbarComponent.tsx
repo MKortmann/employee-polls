@@ -13,8 +13,14 @@ import {
 interface Props {}
 export const NavbarComponent: React.FC<Props> = () => {
 	const style = subNavStyles()
+	const navigate = useNavigate()
 
 	const user: any = useSelector(getLoggedUser)
+
+	if (user === '') {
+		navigate('/')
+	}
+
 	const avatar: any = useSelector(getAvatarComponent)
 
 	return (

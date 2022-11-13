@@ -34,3 +34,6 @@ export const postsSlice = createSlice({
 export default postsSlice.reducer
 
 export const getPostsStatus = (state: any) => state.posts.status
+
+export const getQuestions = (state: any) =>
+	Object.entries(state.posts.questions)
