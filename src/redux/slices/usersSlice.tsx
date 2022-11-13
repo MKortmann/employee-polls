@@ -67,7 +67,7 @@ export const getAvatarComponent = (state: any) =>
 		})
 		.map((user: any) => getAvatar[user[1].id])
 
-const getAvatar: Record<any, any> = {
+export const getAvatar: Record<any, any> = {
 	sarahedo: avatarSarahedo,
 	tylermcginnis: avatarTyler,
 	mtsamis: avatarMtsamis,
