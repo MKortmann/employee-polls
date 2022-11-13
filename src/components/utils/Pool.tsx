@@ -9,7 +9,7 @@ interface Props {
 
 export const Pool: React.FC<Props> = ({ pool }) => {
 	const style = bookStyles()
-	debugger
+
 	return (
 		<Card className={cx(style.card)}>
 			{/* <Card.Img variant='top' src={img} className={cx(style.cardImg)} /> */}
