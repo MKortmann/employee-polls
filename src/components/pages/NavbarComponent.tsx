@@ -2,18 +2,21 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import Button from 'react-bootstrap/Button'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { css, cx } from '@emotion/css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import {
 	getLoggedUser,
 	getAvatarComponent,
+	updateLogUser,
 } from '../../redux/slices/usersSlice'
 
 interface Props {}
 export const NavbarComponent: React.FC<Props> = () => {
 	const style = subNavStyles()
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 
 	const user: any = useSelector(getLoggedUser)
 
@@ -22,6 +25,11 @@ export const NavbarComponent: React.FC<Props> = () => {
 	}
 
 	const avatar: any = useSelector(getAvatarComponent)
+
+	const goToLogin = () => {
+		dispatch(updateLogUser(''))
+		navigate('/')
+	}
 
 	return (
 		<>
@@ -89,6 +97,33 @@ export const NavbarComponent: React.FC<Props> = () => {
 					/>{' '}
 					{user?.[0]?.[1]?.name}
 				</Navbar.Brand>
+
+				{/* <NavLink
+					className={css`
+						margin-right: 30px;
+						text-decoration: none;
+						color: white;
+						:hover {
+							color: red;
+						}
+					`}
+					to={'/'}
+					onClick={() => goToLogin}>
+					Logout
+				</NavLink> */}
+				<Button
+					className={css`
+						margin-right: 30px;
+						text-decoration: none;
+						color: white;
+						:hover {
+							color: red;
+							cursor: pointer;
+						}
+					`}
+					onClick={goToLogin}>
+					Logout
+				</Button>
 			</Navbar>
 		</>
 	)
@@ -100,6 +135,9 @@ export const subNavStyles = () => {
 			text-decoration: none;
 			font-size: 30px;
 			margin: 15px;
+			:hover {
+				color: red;
+			}
 		`,
 	}
 }
