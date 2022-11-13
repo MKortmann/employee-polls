@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { Pools } from '../index'
 import Container from 'react-bootstrap/Container'
 import Stack from 'react-bootstrap/Stack'
 
-import { fetchQuestions, getQuestions } from '../../redux/slices/postsSlice'
+import {
+	fetchQuestions,
+	getQuestions,
+	updateAnsweredQuestions,
+	updateUnansweredQuestions,
+} from '../../redux/slices/postsSlice'
 import {
 	getLoggedUser,
 	getAnsweredQuestions,
@@ -16,7 +21,6 @@ interface Props {}
 export const Home: React.FC<Props> = () => {
 	const dispatch = useDispatch<AppDispatch>()
 	const user: any = useSelector(getLoggedUser)
-	const userId: any = user[1]?.id
 
 	const questions: any = useSelector(getQuestions)
 	console.log('get questions')
@@ -34,8 +38,13 @@ export const Home: React.FC<Props> = () => {
 		}
 	})
 
-	useEffect(() => {
+	console.log('get unansweredQuestions')
+	console.log(unansweredQuestions)
+
+	useLayoutEffect(() => {
 		dispatch(fetchQuestions())
+		dispatch(updateAnsweredQuestions(answeredQuestions))
+		dispatch(updateUnansweredQuestions(unansweredQuestions))
 	}, [])
 
 	return (

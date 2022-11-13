@@ -3,18 +3,22 @@ import Card from 'react-bootstrap/Card'
 import { cx, css } from '@emotion/css'
 import Button from 'react-bootstrap/Button'
 
-interface Props {}
+interface Props {
+	pool: any
+}
 
-export const Pool: React.FC<Props> = ({}) => {
+export const Pool: React.FC<Props> = ({ pool }) => {
 	const style = bookStyles()
+	debugger
 	return (
 		<Card className={cx(style.card)}>
 			{/* <Card.Img variant='top' src={img} className={cx(style.cardImg)} /> */}
 			<Card.Body>
-				<Card.Title>Title Here</Card.Title>
-				<Card.Text>Author Here</Card.Text>
+				<Card.Title>{pool[1].author}</Card.Title>
+				<Card.Text>{pool[1].timestamp}</Card.Text>
+				<h5>{pool[1].optionOne.text}</h5>
 				<div>
-					<Button variant='primary'>Primary</Button>{' '}
+					<Button variant='primary'>Show</Button>{' '}
 				</div>
 			</Card.Body>
 		</Card>

@@ -1,8 +1,10 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit'
 import { _getQuestions } from '../../API/_DATA'
 
 const initialState: any = {
 	questions: {},
+	answeredQuestions: [],
+	unansweredQuestions: [],
 	status: 'idle',
 }
 
@@ -14,7 +16,17 @@ export const fetchQuestions = createAsyncThunk('/fetch/questions', async () => {
 export const postsSlice = createSlice({
 	name: 'posts',
 	initialState,
-	reducers: {},
+	reducers: {
+		updateAnsweredQuestions(state, action) {
+			//to print the state use current
+			console.log(current(state))
+			console.log(action.payload)
+			state.answeredQuestions = action.payload
+		},
+		updateUnansweredQuestions: (state, action) => {
+			state.unansweredQuestions = action.payload
+		},
+	},
 	extraReducers(builder) {
 		builder
 			.addCase(fetchQuestions.pending, (state) => {
@@ -29,7 +41,8 @@ export const postsSlice = createSlice({
 	},
 })
 
-// export const { syncAction } = postsSlice.actions
+export const { updateAnsweredQuestions, updateUnansweredQuestions } =
+	postsSlice.actions
 
 export default postsSlice.reducer
 
