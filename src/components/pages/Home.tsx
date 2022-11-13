@@ -36,8 +36,8 @@ export const Home: React.FC<Props> = () => {
 	return (
 		<>
 			<Container className='my-4'>
-				<Pools header={'Answered'} questions={answeredQuestions}></Pools>
 				<Pools header={'Unanswered'} questions={unansweredQuestions}></Pools>
+				<Pools header={'Answered'} questions={answeredQuestions}></Pools>
 			</Container>
 		</>
 	)
