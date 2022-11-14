@@ -52,3 +52,7 @@ export const getSortQuestions = (state: any) => {
 	const tmp = Object.entries(state.posts.questions)
 	return tmp.sort((a: any, b: any) => a[1].timestamp - b[1].timestamp).reverse()
 }
+
+export const getQuestion = (state: any, id: any) => {
+	return state.posts.questions[id]
+}

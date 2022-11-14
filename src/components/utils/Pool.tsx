@@ -3,7 +3,8 @@ import Card from 'react-bootstrap/Card'
 import { cx, css } from '@emotion/css'
 import Button from 'react-bootstrap/Button'
 import { getAvatar } from '../../redux/slices/usersSlice'
-import { formatISO, formatDistanceToNow } from 'date-fns'
+import { formatISO } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
 	pool: any
@@ -11,11 +12,16 @@ interface Props {
 
 export const Pool: React.FC<Props> = ({ pool }) => {
 	const style = bookStyles()
+	const navigate = useNavigate()
 	const avatar: any = getAvatar[pool[1].author]
 	const date = `
 	${formatISO(pool[1].timestamp, { representation: 'time' }).slice(0, 8)} -
 	${formatISO(pool[1].timestamp, { representation: 'date' })}
 	`
+
+	const routeTo = () => {
+		navigate(`/question/${pool[1].id}`)
+	}
 
 	return (
 		<Card className={cx(style.card)}>
@@ -30,7 +36,9 @@ export const Pool: React.FC<Props> = ({ pool }) => {
 					{pool[1].optionOne.text.slice(0, 16)}...
 				</h5>
 				<div>
-					<Button variant='primary'>Show</Button>{' '}
+					<Button variant='primary' onClick={routeTo}>
+						Show
+					</Button>{' '}
 				</div>
 			</Card.Body>
 		</Card>
