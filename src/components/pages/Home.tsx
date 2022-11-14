@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Pools } from '../index'
 import Container from 'react-bootstrap/Container'
 
-import { fetchQuestions, getQuestions } from '../../redux/slices/postsSlice'
+import { fetchQuestions, getSortQuestions } from '../../redux/slices/postsSlice'
 import { getAnsweredQuestions } from '../../redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch } from '../../redux/store'
@@ -12,7 +12,7 @@ interface Props {}
 export const Home: React.FC<Props> = () => {
 	const dispatch = useDispatch<AppDispatch>()
 
-	const questions: any = useSelector(getQuestions)
+	const questions: any = useSelector(getSortQuestions)
 	let answeredQIds: any = useSelector(getAnsweredQuestions)
 	let unansweredQuestions: any = []
 	let answeredQuestions: any = []
