@@ -18,9 +18,9 @@ export const Question: React.FC<Props> = () => {
 	return (
 		<Container className='my-4'>
 			{isAnswered.length !== 0 ? (
-				<AnsweredQuestion id={id}></AnsweredQuestion>
+				<AnsweredQuestion qid={id}></AnsweredQuestion>
 			) : (
-				<UnansweredQuestion id={id}></UnansweredQuestion>
+				<UnansweredQuestion qid={id}></UnansweredQuestion>
 			)}
 		</Container>
 	)

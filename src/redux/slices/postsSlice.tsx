@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit'
-import { _getQuestions } from '../../API/_DATA'
+import { _getQuestions, _saveQuestionAnswer } from '../../API/_DATA'
 
 const initialState: any = {
 	questions: {},
@@ -12,6 +12,23 @@ export const fetchQuestions = createAsyncThunk('/fetch/questions', async () => {
 	const response = await _getQuestions()
 	return response
 })
+
+export const saveQuestionAnswer = createAsyncThunk(
+	'/save/questionAnswer',
+	async ({
+		authedUser,
+		qid,
+		answer,
+	}: {
+		authedUser: any
+		qid: any
+		answer: any
+	}) => {
+		debugger
+		const response = await _saveQuestionAnswer({ authedUser, qid, answer })
+		return response
+	}
+)
 
 export const postsSlice = createSlice({
 	name: 'posts',
@@ -37,6 +54,9 @@ export const postsSlice = createSlice({
 				console.log('idle')
 				state.status = 'idle'
 				state.questions = action.payload
+			})
+			.addCase(saveQuestionAnswer.fulfilled, (state) => {
+				console.log('finished')
 			})
 	},
 })

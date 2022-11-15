@@ -7,7 +7,7 @@ import {
 	getSortQuestions,
 	updateAnsweredQuestions,
 } from '../../redux/slices/postsSlice'
-import { getLoggedUser } from '../../redux/slices/usersSlice'
+import { fetchUsers, getLoggedUser } from '../../redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch } from '../../redux/store'
 
@@ -24,15 +24,21 @@ export const Home: React.FC<Props> = () => {
 	let answeredQuestions: any = []
 
 	for (let i = 0; i < questions.flat(1).length - 1; i = i + 2) {
-		if (answeredQIds[questions.flat(1)[i]]) {
-			answeredQuestions.push(questions[i / 2])
-		} else {
-			unansweredQuestions.push(questions[i / 2])
-		}
+		answeredQIds[questions.flat(1)[i]]
+			? answeredQuestions.push(questions[i / 2])
+			: unansweredQuestions.push(questions[i / 2])
 	}
 
 	useEffect(() => {
-		dispatch(fetchQuestions())
+		;(async () => {
+			try {
+				await dispatch(fetchUsers()).unwrap()
+				await dispatch(fetchQuestions()).unwrap()
+				console.log('FECTHING AGAIN!!')
+			} catch (err) {
+				console.log('Error')
+			}
+		})()
 	}, [])
 
 	return (

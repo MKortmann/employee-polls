@@ -6,22 +6,36 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import Figure from 'react-bootstrap/Figure'
 
-import { getQuestion } from '../../redux/slices/postsSlice'
-import { useSelector } from 'react-redux'
+import { getQuestion, saveQuestionAnswer } from '../../redux/slices/postsSlice'
+import { useSelector, useDispatch } from 'react-redux'
 import { getAvatar } from '../../redux/slices/usersSlice'
 
 import { useNavigate } from 'react-router-dom'
+import { AppDispatch } from '../../redux/store'
 
 interface Props {
-	id: any
+	qid: any
 }
 
-export const UnansweredQuestion: React.FC<Props> = ({ id }) => {
-	const question = useSelector((state) => getQuestion(state, id))
+export const UnansweredQuestion: React.FC<Props> = ({ qid }) => {
+	const question = useSelector((state) => getQuestion(state, qid))
+	const authedUser = useSelector((state: any) => state.users.loggedUser)
+
 	const navigate = useNavigate()
-	console.log(`Question: ${question}`)
+	const dispatch = useDispatch<AppDispatch>()
 
 	const avatar: any = getAvatar[question.author]
+
+	const optionOne = async () => {
+		const answer = 'optionOne'
+		await dispatch(saveQuestionAnswer({ authedUser, qid, answer })).unwrap()
+		navigate('/home')
+	}
+	const optionTwo = async () => {
+		const answer = 'optionTwo'
+		await dispatch(saveQuestionAnswer({ authedUser, qid, answer })).unwrap()
+		navigate('/home')
+	}
 
 	return (
 		<div>
@@ -45,13 +59,17 @@ export const UnansweredQuestion: React.FC<Props> = ({ id }) => {
 				<Col className='fs-4'>
 					<Card>
 						<p>{question.optionOne.text}</p>
-						<Button variant='info'>Vote Option One</Button>
+						<Button variant='info' onClick={optionOne}>
+							Vote Option One
+						</Button>
 					</Card>
 				</Col>
 				<Col className='fs-4'>
 					<Card>
 						<p>{question.optionTwo.text}</p>
-						<Button variant='secondary'>Vote Option two</Button>
+						<Button variant='secondary' onClick={optionTwo}>
+							Vote Option two
+						</Button>
 					</Card>
 				</Col>
 			</Row>

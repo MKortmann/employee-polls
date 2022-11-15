@@ -13,11 +13,11 @@ import { getAvatar } from '../../redux/slices/usersSlice'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
-	id: any
+	qid: any
 }
 
-export const AnsweredQuestion: React.FC<Props> = ({ id }) => {
-	const question = useSelector((state) => getQuestion(state, id))
+export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
+	const question = useSelector((state) => getQuestion(state, qid))
 	const navigate = useNavigate()
 	console.log(`Question: ${question}`)
 
