@@ -19,9 +19,8 @@ interface Props {
 export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 	const question = useSelector((state) => getQuestion(state, qid))
 	const navigate = useNavigate()
-	console.log(`Question: ${question}`)
-
 	const avatar: any = getAvatar[question.author]
+
 	return (
 		<div>
 			<Row>

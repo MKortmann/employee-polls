@@ -2,11 +2,7 @@ import React, { useEffect } from 'react'
 import { Pools } from '../index'
 import Container from 'react-bootstrap/Container'
 
-import {
-	fetchQuestions,
-	getSortQuestions,
-	updateAnsweredQuestions,
-} from '../../redux/slices/postsSlice'
+import { fetchQuestions, getSortQuestions } from '../../redux/slices/postsSlice'
 import { fetchUsers, getLoggedUser } from '../../redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch } from '../../redux/store'
@@ -14,6 +10,7 @@ import type { AppDispatch } from '../../redux/store'
 interface Props {}
 
 export const Home: React.FC<Props> = () => {
+	//the default Dispatch type does not know about thunks or other middleware. In order to correctly dispatch thunks, you need to use the specific customized AppDispatch type from the store that includes the thunk middleware types, and use that with useDispatch. Adding a pre-typed hook keeps you from forgetting to import AppDispatch where it's need.
 	const dispatch = useDispatch<AppDispatch>()
 
 	const questions: any = useSelector(getSortQuestions)
@@ -32,11 +29,11 @@ export const Home: React.FC<Props> = () => {
 	useEffect(() => {
 		;(async () => {
 			try {
+				// unwrap() makes the await to wait the request success or failure at the component level
 				await dispatch(fetchUsers()).unwrap()
 				await dispatch(fetchQuestions()).unwrap()
-				console.log('FECTHING AGAIN!!')
 			} catch (err) {
-				console.log('Error')
+				console.log('No possible to fetch questions and/or users')
 			}
 		})()
 	}, [])
