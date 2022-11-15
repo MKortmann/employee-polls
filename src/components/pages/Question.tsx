@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 import Figure from 'react-bootstrap/Figure'
 import { getAvatar } from '../../redux/slices/usersSlice'
@@ -36,14 +37,19 @@ export const Question: React.FC<Props> = () => {
 					</Figure.Caption>
 				</Figure>
 			</Row>
+
 			<Row>
 				<Col className='fs-4'>
-					<p>{question.optionOne.text}</p>
-					<Button variant='info'>Vote Option One</Button>
+					<Card>
+						<p>{question.optionOne.text}</p>
+						<Button variant='info'>Vote Option One</Button>
+					</Card>
 				</Col>
 				<Col className='fs-4'>
-					<p>{question.optionTwo.text}</p>
-					<Button variant='secondary'>Vote Option two</Button>
+					<Card>
+						<p>{question.optionTwo.text}</p>
+						<Button variant='secondary'>Vote Option two</Button>
+					</Card>
 				</Col>
 			</Row>
 			<Row md='auto' className='my-4 justify-content-md-center'>
