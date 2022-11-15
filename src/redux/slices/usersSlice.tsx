@@ -77,10 +77,3 @@ export const getAvatar: Record<any, any> = {
 export const getAnsweredQuestions = (state: any) => {
 	return Object.entries(state.users.users[state.users.loggedUser].answers)
 }
-
-// export const getAnsweredQuestions = (state: any) =>
-// 	Object.entries(state.users.users)
-// 		.filter((user: any) => {
-// 			return user[1].id === state.users.loggedUser
-// 		})
-// 		.map((user: any) => user.answers)
