@@ -2,7 +2,11 @@ import React, { useEffect } from 'react'
 import { Pools } from '../index'
 import Container from 'react-bootstrap/Container'
 
-import { fetchQuestions, getSortQuestions } from '../../redux/slices/postsSlice'
+import {
+	fetchQuestions,
+	getSortQuestions,
+	updateAnsweredQuestions,
+} from '../../redux/slices/postsSlice'
 import { getAnsweredQuestions } from '../../redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch } from '../../redux/store'

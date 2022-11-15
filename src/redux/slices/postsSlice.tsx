@@ -19,7 +19,7 @@ export const postsSlice = createSlice({
 	reducers: {
 		updateAnsweredQuestions(state, action) {
 			//to print the state use current
-			console.log(current(state))
+			console.log('updateAnsweredQuestions')
 			console.log(action.payload)
 			state.answeredQuestions = action.payload
 		},
@@ -56,3 +56,8 @@ export const getSortQuestions = (state: any) => {
 export const getQuestion = (state: any, id: any) => {
 	return state.posts.questions[id]
 }
+
+// export const isQuestionAnswered = (state: any, id: any) => {
+// 	debugger
+// 	return state.posts.answeredQuestions.filter((q: any) => q.id === id)
+// }
