@@ -18,6 +18,14 @@ interface Props {
 
 export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 	const question = useSelector((state) => getQuestion(state, qid))
+	debugger
+	const totalVotes =
+		question.optionOne.votes.length + question.optionTwo.votes.length
+	const porcentageAnsOptionOne =
+		(question.optionOne.votes.length / totalVotes) * 100
+	const porcentageAnsOptionTwo =
+		(question.optionTwo.votes.length / totalVotes) * 100
+
 	const navigate = useNavigate()
 	const avatar: any = getAvatar[question.author]
 
@@ -32,7 +40,7 @@ export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 						src={avatar}
 					/>
 					<Figure.Caption className='fs-5'>
-						<div className='fs-2'>Votes</div>
+						<div className='fs-2'>Total Number of Votes: {totalVotes}</div>
 					</Figure.Caption>
 				</Figure>
 			</Row>
@@ -41,13 +49,23 @@ export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 				<Col className='fs-4'>
 					<Card>
 						<p>{question.optionOne.text}</p>
-						<ProgressBar variant='info' now={60} label={`${60}%`} />
+						<p>Votes: {question.optionOne.votes.length}</p>
+						<ProgressBar
+							variant='info'
+							now={porcentageAnsOptionOne}
+							label={`${porcentageAnsOptionOne}%`}
+						/>
 					</Card>
 				</Col>
 				<Col className='fs-4'>
 					<Card>
 						<p>{question.optionTwo.text}</p>
-						<ProgressBar variant='secondary' now={40} label={`${40}%`} />
+						<p>Votes: {question.optionTwo.votes.length}</p>
+						<ProgressBar
+							variant='secondary'
+							now={porcentageAnsOptionTwo}
+							label={`${porcentageAnsOptionTwo}%`}
+						/>
 					</Card>
 				</Col>
 			</Row>
