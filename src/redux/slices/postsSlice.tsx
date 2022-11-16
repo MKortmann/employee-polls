@@ -3,8 +3,6 @@ import { _getQuestions, _saveQuestionAnswer } from '../../API/_DATA'
 
 const initialState: any = {
 	questions: {},
-	answeredQuestions: [],
-	unansweredQuestions: [],
 	status: 'idle',
 }
 
@@ -24,7 +22,6 @@ export const saveQuestionAnswer = createAsyncThunk(
 		qid: any
 		answer: any
 	}) => {
-		debugger
 		const response = await _saveQuestionAnswer({ authedUser, qid, answer })
 		return response
 	}
@@ -34,14 +31,11 @@ export const postsSlice = createSlice({
 	name: 'posts',
 	initialState,
 	reducers: {
-		updateAnsweredQuestions(state, action) {
+		setStatus(state, action) {
 			//to print the state use current
-			console.log('updateAnsweredQuestions')
+			console.log('updateState')
 			console.log(action.payload)
-			state.answeredQuestions = action.payload
-		},
-		updateUnansweredQuestions: (state, action) => {
-			state.unansweredQuestions = action.payload
+			state.chainStatus = action.payload
 		},
 	},
 	extraReducers(builder) {
@@ -55,14 +49,18 @@ export const postsSlice = createSlice({
 				state.status = 'idle'
 				state.questions = action.payload
 			})
+			.addCase(saveQuestionAnswer.pending, (state) => {
+				console.log('pending')
+				state.status = 'loading'
+			})
 			.addCase(saveQuestionAnswer.fulfilled, (state) => {
 				console.log('finished')
+				state.status = 'idle'
 			})
 	},
 })
 
-export const { updateAnsweredQuestions, updateUnansweredQuestions } =
-	postsSlice.actions
+export const { setStatus } = postsSlice.actions
 
 export default postsSlice.reducer
 

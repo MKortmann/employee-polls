@@ -33,9 +33,6 @@ export const Home: React.FC<Props> = () => {
 	}
 
 	useEffect(() => {
-		if (user.length === 0) {
-			navigate('/')
-		}
 		;(async () => {
 			try {
 				// unwrap() makes the await to wait the request success or failure at the component level

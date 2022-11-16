@@ -19,7 +19,11 @@ function App() {
 				<Route
 					path={'/question/:id'}
 					element={
-						loggedUser !== '' ? <Question /> : <Navigate to='/' />
+						loggedUser !== '' ? (
+							<Question key={Date.now()} />
+						) : (
+							<Navigate to='/' />
+						)
 					}></Route>
 				<Route path='*' element={<NotFound />} />
 			</Routes>
