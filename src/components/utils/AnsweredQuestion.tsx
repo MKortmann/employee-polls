@@ -19,7 +19,7 @@ interface Props {
 
 export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 	const question = useSelector((state) => getQuestion(state, qid))
-	debugger
+
 	const totalVotes =
 		question.optionOne.votes.length + question.optionTwo.votes.length
 	const porcentageAnsOptionOne =
