@@ -1,9 +1,15 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 
 import './App.scss'
-import { Login, Home, NavbarComponent, NotFound } from './components/index'
+import {
+	Login,
+	Home,
+	NavbarComponent,
+	NotFound,
+	Question,
+	NewQuestion,
+} from './components/index'
 import { useSelector } from 'react-redux'
-import { Question } from './components/pages/Question'
 
 function App() {
 	const loggedUser = useSelector((state: any) => state.users.loggedUser)
@@ -21,6 +27,15 @@ function App() {
 					element={
 						loggedUser !== '' ? (
 							<Question key={Date.now()} />
+						) : (
+							<Navigate to='/' />
+						)
+					}></Route>
+				<Route
+					path={'/newQuestion'}
+					element={
+						loggedUser !== '' ? (
+							<NewQuestion key={Date.now()} />
 						) : (
 							<Navigate to='/' />
 						)
