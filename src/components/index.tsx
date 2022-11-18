@@ -4,6 +4,7 @@ export { NavbarComponent } from './pages/NavbarComponent'
 export { NotFound } from './pages/NotFound'
 export { Question } from './pages/Question'
 export { NewQuestion } from './pages/NewQuestion'
+export { Leaderboard } from './pages/Leaderboard'
 
 export { Pools } from './utils/Pools'
 export { Pool } from './utils/Pool'

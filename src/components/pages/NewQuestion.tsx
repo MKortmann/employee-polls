@@ -25,7 +25,7 @@ export const NewQuestion: React.FC<Props> = () => {
 
 	const onFormSubmit = async (e: any) => {
 		e.preventDefault()
-		debugger
+
 		await dispatch(
 			saveQuestion({ optionOneText, optionTwoText, author })
 		).unwrap()
@@ -66,19 +66,21 @@ export const NewQuestion: React.FC<Props> = () => {
 					/>
 				</FloatingLabel>
 
+				<Row>
+					<Button
+						className='my-5'
+						variant='outline-primary'
+						type='submit'
+						onClick={(e) => onFormSubmit(e)}>
+						Submit
+					</Button>
+				</Row>
 				<Button
 					className='my-5 mx-5'
-					variant='secondary'
+					variant='outline-secondary'
 					type='submit'
 					onClick={() => navigate('/home')}>
 					back
-				</Button>
-				<Button
-					className='my-5'
-					variant='primary'
-					type='submit'
-					onClick={(e) => onFormSubmit(e)}>
-					Submit
 				</Button>
 			</Form>
 		</Container>

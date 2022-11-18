@@ -8,6 +8,7 @@ import {
 	NotFound,
 	Question,
 	NewQuestion,
+	Leaderboard,
 } from './components/index'
 import { useSelector } from 'react-redux'
 
@@ -36,6 +37,15 @@ function App() {
 					element={
 						loggedUser !== '' ? (
 							<NewQuestion key={Date.now()} />
+						) : (
+							<Navigate to='/' />
+						)
+					}></Route>
+				<Route
+					path={'/leaderboard'}
+					element={
+						loggedUser !== '' ? (
+							<Leaderboard key={Date.now()} />
 						) : (
 							<Navigate to='/' />
 						)
