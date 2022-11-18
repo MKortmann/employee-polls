@@ -1,5 +1,9 @@
-import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit'
-import { _getQuestions, _saveQuestionAnswer } from '../../API/_DATA'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import {
+	_getQuestions,
+	_saveQuestionAnswer,
+	_saveQuestion,
+} from '../../API/_DATA'
 
 const initialState: any = {
 	questions: {},
@@ -23,6 +27,26 @@ export const saveQuestionAnswer = createAsyncThunk(
 		answer: any
 	}) => {
 		const response = await _saveQuestionAnswer({ authedUser, qid, answer })
+		return response
+	}
+)
+
+export const saveQuestion = createAsyncThunk(
+	'/add/question',
+	async ({
+		optionOneText,
+		optionTwoText,
+		author,
+	}: {
+		optionOneText: string
+		optionTwoText: string
+		author: string
+	}) => {
+		const response = await _saveQuestion({
+			optionOneText,
+			optionTwoText,
+			author,
+		})
 		return response
 	}
 )
@@ -54,6 +78,14 @@ export const postsSlice = createSlice({
 				state.status = 'loading'
 			})
 			.addCase(saveQuestionAnswer.fulfilled, (state) => {
+				console.log('finished')
+				state.status = 'idle'
+			})
+			.addCase(saveQuestion.pending, (state) => {
+				console.log('pending')
+				state.status = 'loading'
+			})
+			.addCase(saveQuestion.fulfilled, (state) => {
 				console.log('finished')
 				state.status = 'idle'
 			})

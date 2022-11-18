@@ -6,17 +6,30 @@ import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
+import { useNavigate } from 'react-router-dom'
+
+import { saveQuestion } from '../../redux/slices/postsSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import type { AppDispatch } from '../../redux/store'
+
 interface Props {}
 
 export const NewQuestion: React.FC<Props> = () => {
-	const [firstOption, setFirstOption] = useState('')
-	const [secondOption, setSecondOption] = useState('')
+	const dispatch = useDispatch<AppDispatch>()
+	const navigate = useNavigate()
 
-	const onFormSubmit = (e: any) => {
+	const [optionOneText, setOptionOneText] = useState('text one')
+	const [optionTwoText, setOptionTwoText] = useState('text two')
+
+	const author: string = useSelector((state: any) => state.users.loggedUser)
+
+	const onFormSubmit = async (e: any) => {
 		e.preventDefault()
-		console.log(firstOption)
-		console.log(secondOption)
 		debugger
+		await dispatch(
+			saveQuestion({ optionOneText, optionTwoText, author })
+		).unwrap()
+		navigate('/home')
 	}
 	return (
 		<Container>
@@ -36,7 +49,7 @@ export const NewQuestion: React.FC<Props> = () => {
 						type='text'
 						placeholder='Enter the first option'
 						onChange={(text) => {
-							setFirstOption(text.target.value)
+							setOptionOneText(text.target.value)
 						}}
 					/>
 				</FloatingLabel>
@@ -48,12 +61,20 @@ export const NewQuestion: React.FC<Props> = () => {
 						type='text'
 						placeholder='Enter the second option'
 						onChange={(text) => {
-							setSecondOption(text.target.value)
+							setOptionTwoText(text.target.value)
 						}}
 					/>
 				</FloatingLabel>
 
 				<Button
+					className='my-5 mx-5'
+					variant='secondary'
+					type='submit'
+					onClick={() => navigate('/home')}>
+					back
+				</Button>
+				<Button
+					className='my-5'
 					variant='primary'
 					type='submit'
 					onClick={(e) => onFormSubmit(e)}>
