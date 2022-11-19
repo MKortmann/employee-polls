@@ -3,14 +3,19 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
 import Figure from 'react-bootstrap/Figure'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
 
 import { getUsers, getAvatar } from '../../redux/slices/usersSlice'
 import { useSelector } from 'react-redux'
 import type { AppDispatch } from '../../redux/store'
 
+import { useNavigate } from 'react-router-dom'
+
 interface Props {}
 
 export const Leaderboard: React.FC<Props> = () => {
+	const navigate = useNavigate()
 	const users = useSelector(getUsers)
 
 	const sortUsers = Object.entries(users)
@@ -56,6 +61,12 @@ export const Leaderboard: React.FC<Props> = () => {
 					))}
 				</tbody>
 			</Table>
+			<Row md='auto' className='my-4 justify-content-md-center'>
+				{' '}
+				<Button variant='outline-primary' onClick={() => navigate('/home')}>
+					Back
+				</Button>
+			</Row>
 		</Container>
 	)
 }
