@@ -8,7 +8,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 
 import { getQuestion } from '../../redux/slices/postsSlice'
 import { useSelector } from 'react-redux'
-import { getAvatar } from '../../redux/slices/usersSlice'
+import { getAvatar, getLoggedUser } from '../../redux/slices/usersSlice'
 
 import { useNavigate } from 'react-router-dom'
 import { css } from '@emotion/css'
@@ -19,6 +19,7 @@ interface Props {
 
 export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 	const question = useSelector((state) => getQuestion(state, qid))
+	const user: any = useSelector(getLoggedUser)
 
 	const totalVotes =
 		question.optionOne.votes.length + question.optionTwo.votes.length
@@ -29,6 +30,19 @@ export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 
 	const navigate = useNavigate()
 	const avatar: any = getAvatar[question.author]
+
+	const avatarUser = (
+		<Figure>
+			<Figure.Image
+				width={46}
+				height={46}
+				alt='user avatar'
+				src={getAvatar[user[0][1].id]}
+			/>
+		</Figure>
+	)
+
+	debugger
 
 	return (
 		<div>
@@ -42,6 +56,7 @@ export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 					/>
 					<Figure.Caption className='fs-5'>
 						<div className='fs-2'>Total Number of Votes: {totalVotes}</div>
+						<div>Author: {question.author}</div>
 					</Figure.Caption>
 				</Figure>
 			</Row>
@@ -49,8 +64,16 @@ export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 			<Row>
 				<div className='fs-2'>Would You Rather...</div>
 				<Col className='fs-4'>
-					<Card>
+					<Card className='h-100 align-text-bottom align-bottom'>
 						<p>{question.optionOne.text}</p>
+						{user[0][1]?.answers[qid] === 'optionOne' ? (
+							avatarUser
+						) : (
+							<div
+								className={css`
+									margin-top: 72px;
+								`}></div>
+						)}
 						<p>Votes: {question.optionOne.votes.length}</p>
 						<ProgressBar
 							className={css`
@@ -64,8 +87,16 @@ export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 					</Card>
 				</Col>
 				<Col className='fs-4'>
-					<Card>
+					<Card className='h-100 '>
 						<p>{question.optionTwo.text}</p>
+						{user[0][1]?.answers[qid] === 'optionTwo' ? (
+							avatarUser
+						) : (
+							<div
+								className={css`
+									margin-top: 72px;
+								`}></div>
+						)}
 						<p>Votes: {question.optionTwo.votes.length}</p>
 						<ProgressBar
 							className={css`

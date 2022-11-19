@@ -104,17 +104,6 @@ _saveQuestion({ optionOneText, optionTwoText, author })
 - optionOneText: `the first option of the question`
 - optionTwoText: `the second option of the question`
 
-### `addUser`
-
-Method Signature:
-
-```js
-_addUser(fullName)
-```
-
-- Add a new user
-- This collection represents all the users that play this game.
-
 #### Note about React
 
 The app was created used npx create-react-app! I started from scratch. However, I am using
