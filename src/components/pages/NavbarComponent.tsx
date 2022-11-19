@@ -67,7 +67,7 @@ export const NavbarComponent: React.FC<Props> = () => {
 					</NavLink>
 					<NavLink
 						className={cx(style.link)}
-						to='/newQuestion'
+						to='/add'
 						style={({ isActive }) => ({
 							color: isActive ? 'red' : 'white',
 						})}>

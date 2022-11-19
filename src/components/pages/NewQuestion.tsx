@@ -34,10 +34,10 @@ export const NewQuestion: React.FC<Props> = () => {
 	return (
 		<Container>
 			<Row className='fs-2 my-5 justify-content-md-center'>
-				<div className='fs-2'>Would You Rather...</div>
+				<div className='fs-2'>Create Your Own Poll</div>
 			</Row>
 			<Row>
-				<div className='fs-4'>Create Your Own Poll</div>
+				<div className='fs-4'>Would You Rather...</div>
 			</Row>
 			<Form className='my-5 justify-content'>
 				<Form.Label>First Option</Form.Label>

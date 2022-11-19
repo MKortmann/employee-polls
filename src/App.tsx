@@ -33,7 +33,7 @@ function App() {
 						)
 					}></Route>
 				<Route
-					path={'/newQuestion'}
+					path={'/add'}
 					element={
 						loggedUser !== '' ? (
 							<NewQuestion key={Date.now()} />

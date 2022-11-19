@@ -1,46 +1,130 @@
-# Getting Started with Create React App
+# Employee Pool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Employee Pool is in fact a game of preferences that the user answer a question (Would you rather...) voting between
+two options.
 
-## Available Scripts
+The user can answer a question, ask question, view answered questions votes and check the leaderboard.
 
-In the project directory, you can run:
+This is the second version of the App that was developed from **scratch** using React Library (create-react-app)
+with some extras:
 
-### `npm start`
+- [`Added Typescript`](https://create-react-app.dev/docs/adding-typescript/)
+- [`React Router`](https://reactrouter.com/en/v6.3.0/api#browserrouter)
+- [`React Redux`](https://react-redux.js.org/)
+- [`Bootstrap`](https://react-bootstrap.github.io/getting-started/introduction/)
+- [`React Icons`](https://react-icons.github.io/react-icons/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app enclosed an appbar and different views as:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **LogIn/SignUp**
 
-### `npm test`
+  - LogIn: Select a user to start playing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Questions**
 
-### `npm run build`
+  - See: Unanswered questions
+  - See: Answered questions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **New Questions**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - You can add a new question
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Leaderboard**
+  - You check the board of players and their respective points
 
-### `npm run eject`
+## How to start the App?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To use the app, please, click in the link below:
+...in development...
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To install the App, please, follow the instructions at Installation section.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Installation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. First you have to create a directory in the desire location
+2. git clone `ADD HERE GITHUB PROJECT LINK`
+3. install all project dependencies with `npm install`
+4. start the development server with `npm start`
 
-## Learn More
+## Backend Server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To simplify the process I used a backend server. The provided file [`_DATA.js`] by Udacity contains the methods used to perform necessary operations on the backend:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [`_getUsers`](#getUsers)
+- [`_getQuestions`](#getQuestions)
+- [`_saveQuestionAnswer`](#saveQuestionAnswer)
+- [`_saveQuestion`](#saveQuestion)
+- [`_addUser`](#addUser)
+
+### `getUsers`
+
+Method Signature:
+
+```js
+_getUsers()
+```
+
+- Returns a Promise which resolves to a JSON object containing a collection of users
+- This collection represents all the users that play this game
+
+### `getQuestions`
+
+Method Signature:
+
+```js
+_getQuestions()
+```
+
+- Returns a Promise which resolves to a JSON object containing a collection of questions
+- This collection represents all the questions posted by all the users
+
+### `saveQuestionAnswer`
+
+Method Signature:
+
+```js
+_saveQuestionAnswer({ authedUser: authedUser, qid: qid, answer: answer })
+```
+
+- save a question answer
+- authedUser: `User name that are posting this question`
+- qid: `each question has an id was generated automatically by _DATA.js`
+- answer: `answer answered by the user: in this case he choose only between two options`
+
+### `saveQuestion`
+
+Method Signature:
+
+```js
+_saveQuestion({ optionOneText, optionTwoText, author })
+```
+
+- add a new question
+- author: `User name that are posting a new question`
+- optionOneText: `the first option of the question`
+- optionTwoText: `the second option of the question`
+
+### `addUser`
+
+Method Signature:
+
+```js
+_addUser(fullName)
+```
+
+- Add a new user
+- This collection represents all the users that play this game.
+
+#### Note about React
+
+The app was created used npx create-react-app! I started from scratch. However, I am using
+the Udacity the file [`_DATA.js`] as a backend server. The API was extended by me to be able to add a new user.
+
+### More Information
+
+This project has the main objective to practice and show my knowledge in React, Redux and React-Dom-Router!
+--For any extra information, please, feel free to contact me.
+
+### Contributions
+
+The project was done completely by me starting from scratch. However, if you want to contribute, please, do not hesitate to contact me!
