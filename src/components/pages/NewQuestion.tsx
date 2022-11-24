@@ -18,8 +18,8 @@ export const NewQuestion: React.FC<Props> = () => {
 	const dispatch = useDispatch<AppDispatch>()
 	const navigate = useNavigate()
 
-	const [optionOneText, setOptionOneText] = useState('text one')
-	const [optionTwoText, setOptionTwoText] = useState('text two')
+	const [optionOneText, setOptionOneText] = useState('')
+	const [optionTwoText, setOptionTwoText] = useState('')
 
 	const author: string = useSelector((state: any) => state.users.loggedUser)
 
@@ -71,6 +71,7 @@ export const NewQuestion: React.FC<Props> = () => {
 						className='my-5'
 						variant='outline-primary'
 						type='submit'
+						disabled={optionOneText === '' || optionTwoText === ''}
 						onClick={(e) => onFormSubmit(e)}>
 						Submit
 					</Button>
