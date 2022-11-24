@@ -65,6 +65,7 @@ export const Login: React.FC<Props> = () => {
 
 			{
 				<DropdownButton
+					data-testid='select-user'
 					title={'Select an user'}
 					className={css`
 						font-size: 40px;
