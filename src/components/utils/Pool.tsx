@@ -11,6 +11,7 @@ interface Props {
 }
 
 export const Pool: React.FC<Props> = ({ pool }) => {
+	debugger
 	const style = bookStyles()
 	const navigate = useNavigate()
 	const avatar: any = getAvatar[pool[1].author]
@@ -36,7 +37,7 @@ export const Pool: React.FC<Props> = ({ pool }) => {
 					{pool[1].optionOne.text.slice(0, 16)}...
 				</h5>
 				<div>
-					<Button variant='primary' onClick={routeTo}>
+					<Button variant='primary' data-testid='show' onClick={routeTo}>
 						Show
 					</Button>{' '}
 				</div>
