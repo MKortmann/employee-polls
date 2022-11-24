@@ -29,7 +29,7 @@ describe('Pool', () => {
 		// expect(getByText(/Show/i)).toBeInTheDocument()
 		expect(component.getByTestId('show')).toBeInTheDocument()
 	})
-	it('Check that the url change if I click at show', () => {
+	it('Check that the url change if I click at show', async () => {
 		const pool = [
 			'xj352vofupe1dqz9emx13r',
 			{
@@ -53,7 +53,7 @@ describe('Pool', () => {
 		)
 
 		const btnShow = component.getByTestId('show')
-		fireEvent.click(btnShow)
+		await fireEvent.click(btnShow)
 
 		expect(global.window.location.pathname).toContain(
 			'/question/xj352vofupe1dqz9emx13r'

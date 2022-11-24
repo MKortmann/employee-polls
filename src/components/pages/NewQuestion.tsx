@@ -71,7 +71,9 @@ export const NewQuestion: React.FC<Props> = () => {
 						className='my-5'
 						variant='outline-primary'
 						type='submit'
-						disabled={optionOneText === '' || optionTwoText === ''}
+						disabled={
+							optionOneText === '' || optionTwoText === '' ? true : false
+						}
 						onClick={(e) => onFormSubmit(e)}>
 						Submit
 					</Button>
