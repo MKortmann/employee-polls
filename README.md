@@ -3,7 +3,7 @@
 Employee Pool is in fact a game of preferences that the user answer a question (Would you rather...) voting between
 two options.
 
-The user can answer a question, ask question, view answered questions votes and check the leaderboard.
+The user can answer and ask questions, view answered questions, votes and check the leaderboard.
 
 This is the second version of the App that was developed from **scratch** using React Library (create-react-app)
 with some extras:
@@ -13,6 +13,8 @@ with some extras:
 - [`React Redux`](https://react-redux.js.org/)
 - [`Bootstrap`](https://react-bootstrap.github.io/getting-started/introduction/)
 - [`React Icons`](https://react-icons.github.io/react-icons/)
+- [`Jest`](https://jestjs.io/docs/25.x/tutorial-react)
+- [`Reacting Testing Library`](https://testing-library.com/docs/react-testing-library/example-intro/)
 
 The app enclosed an appbar and different views as:
 
@@ -48,7 +50,7 @@ To install the App, please, follow the instructions at Installation section.
 
 ## Backend Server
 
-To simplify the process I used a backend server. The provided file [`_DATA.js`] by Udacity contains the methods used to perform necessary operations on the backend:
+To simplify the process I used a backend server. The provided file [`_DATA.js`] contains the methods used to perform necessary operations on the backend:
 
 - [`_getUsers`](#getUsers)
 - [`_getQuestions`](#getQuestions)

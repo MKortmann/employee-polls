@@ -42,7 +42,7 @@ export const Leaderboard: React.FC<Props> = () => {
 				</thead>
 				<tbody>
 					{sortUsers.map((user: any, index) => (
-						<tr>
+						<tr key={index}>
 							<td>{index}</td>
 							<td>
 								<Figure>
