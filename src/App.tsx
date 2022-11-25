@@ -24,7 +24,7 @@ function App() {
 					path={'/home'}
 					element={loggedUser !== '' ? <Home /> : <Navigate to='/' />}></Route>
 				<Route
-					path={'/question/:id'}
+					path={'/questions/:id'}
 					element={
 						loggedUser !== '' ? (
 							<Question key={Date.now()} />

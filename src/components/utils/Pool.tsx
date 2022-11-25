@@ -20,7 +20,7 @@ export const Pool: React.FC<Props> = ({ pool }) => {
 	`
 
 	const routeTo = () => {
-		navigate(`/question/${pool[1].id}`)
+		navigate(`/questions/${pool[1].id}`)
 	}
 
 	return (

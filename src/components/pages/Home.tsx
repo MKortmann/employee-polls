@@ -12,8 +12,6 @@ import Tabs from 'react-bootstrap/Tabs'
 
 import './Home.style.scss'
 
-import { css, cx } from '@emotion/css'
-
 import { SpinnerComponent } from '../index'
 interface Props {}
 
@@ -21,8 +19,6 @@ export const Home: React.FC<Props> = () => {
 	//the default Dispatch type does not know about thunks or other middleware. In order to correctly dispatch thunks, you need to use the specific customized AppDispatch type from the store that includes the thunk middleware types, and use that with useDispatch. Adding a pre-typed hook keeps you from forgetting to import AppDispatch where it's need.
 	const dispatch = useDispatch<AppDispatch>()
 	const [componentStatus, setComponentStatus] = useState('idle')
-	const postSliceStatus = useSelector((state: any) => state.users.status)
-	const userSliceStatus = useSelector((state: any) => state.users.status)
 
 	const questions: any = useSelector(getSortQuestions)
 	const user: any = useSelector(getLoggedUser)
