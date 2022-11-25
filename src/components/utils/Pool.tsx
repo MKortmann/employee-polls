@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const Pool: React.FC<Props> = ({ pool }) => {
-	debugger
 	const style = bookStyles()
 	const navigate = useNavigate()
 	const avatar: any = getAvatar[pool[1].author]

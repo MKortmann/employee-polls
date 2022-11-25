@@ -14,7 +14,6 @@ export const SpinnerComponent: React.FC<Props> = () => {
 			<Spinner animation='grow' variant='warning' />
 			<Spinner animation='grow' variant='info' />
 			<Spinner animation='grow' variant='dark' />
-			{/* <Spinner animation='grow' variant='light' /> */}
 		</div>
 	)
 }

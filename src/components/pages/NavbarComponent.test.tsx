@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router'
 import { Routes, Route } from 'react-router-dom'
 
 describe('NewQuestion', () => {
-	it('check if click at user, it will move the home', async () => {
+	it('check if the user click at logout, it will move to login page', async () => {
 		await render(
 			<MemoryRouter initialEntries={['/navbar']}>
 				<Provider store={store}>

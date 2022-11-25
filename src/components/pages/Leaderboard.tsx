@@ -8,7 +8,6 @@ import Row from 'react-bootstrap/Row'
 
 import { getUsers, getAvatar } from '../../redux/slices/usersSlice'
 import { useSelector } from 'react-redux'
-import type { AppDispatch } from '../../redux/store'
 
 import { useNavigate } from 'react-router-dom'
 
