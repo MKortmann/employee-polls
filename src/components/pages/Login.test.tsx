@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router'
 import { Routes, Route } from 'react-router-dom'
 
 describe('NewQuestion', () => {
-	it('check if click at user, it will move the home', () => {
+	it('check if the select button has the text select an user', () => {
 		render(
 			<MemoryRouter>
 				<Provider store={store}>
