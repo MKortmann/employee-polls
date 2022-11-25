@@ -29,17 +29,14 @@ export const usersSlice = createSlice({
 	reducers: {
 		updateLogUser(state, action) {
 			state.loggedUser = action.payload
-			console.log(state.loggedUser)
 		},
 	},
 	extraReducers(builder) {
 		builder
 			.addCase(fetchUsers.pending, (state) => {
-				console.log('loading')
 				state.status = 'loading'
 			})
 			.addCase(fetchUsers.fulfilled, (state, action) => {
-				console.log('idle')
 				state.status = 'idle'
 				state.users = action.payload
 			})

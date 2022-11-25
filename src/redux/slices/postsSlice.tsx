@@ -56,37 +56,28 @@ export const postsSlice = createSlice({
 	initialState,
 	reducers: {
 		setStatus(state, action) {
-			//to print the state use current
-			console.log('updateState')
-			console.log(action.payload)
 			state.chainStatus = action.payload
 		},
 	},
 	extraReducers(builder) {
 		builder
 			.addCase(fetchQuestions.pending, (state) => {
-				console.log('loading')
 				state.status = 'loading'
 			})
 			.addCase(fetchQuestions.fulfilled, (state, action) => {
-				console.log('idle')
 				state.status = 'idle'
 				state.questions = action.payload
 			})
 			.addCase(saveQuestionAnswer.pending, (state) => {
-				console.log('pending')
 				state.status = 'loading'
 			})
 			.addCase(saveQuestionAnswer.fulfilled, (state) => {
-				console.log('finished')
 				state.status = 'idle'
 			})
 			.addCase(saveQuestion.pending, (state) => {
-				console.log('pending')
 				state.status = 'loading'
 			})
 			.addCase(saveQuestion.fulfilled, (state) => {
-				console.log('finished')
 				state.status = 'idle'
 			})
 	},
