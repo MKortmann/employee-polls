@@ -134,5 +134,5 @@ async function updateAndRoute(
 	await dispatch(fetchUsers()).unwrap()
 	await dispatch(fetchQuestions()).unwrap()
 	setComponentStatus('idle')
-	navigate(`/question/${qid}`)
+	navigate(`/questions/${qid}`)
 }

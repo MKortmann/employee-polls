@@ -7,6 +7,11 @@ import { fetchUsers, getLoggedUser } from '../../redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch } from '../../redux/store'
 
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
+
+import './Home.style.scss'
+
 import { SpinnerComponent } from '../index'
 interface Props {}
 
@@ -14,8 +19,6 @@ export const Home: React.FC<Props> = () => {
 	//the default Dispatch type does not know about thunks or other middleware. In order to correctly dispatch thunks, you need to use the specific customized AppDispatch type from the store that includes the thunk middleware types, and use that with useDispatch. Adding a pre-typed hook keeps you from forgetting to import AppDispatch where it's need.
 	const dispatch = useDispatch<AppDispatch>()
 	const [componentStatus, setComponentStatus] = useState('idle')
-	const postSliceStatus = useSelector((state: any) => state.users.status)
-	const userSliceStatus = useSelector((state: any) => state.users.status)
 
 	const questions: any = useSelector(getSortQuestions)
 	const user: any = useSelector(getLoggedUser)
@@ -51,8 +54,21 @@ export const Home: React.FC<Props> = () => {
 		<Container className='my-4'>
 			{componentStatus === 'idle' ? (
 				<>
-					<Pools header={'Unanswered'} questions={unansweredQuestions}></Pools>
-					<Pools header={'Answered'} questions={answeredQuestions}></Pools>
+					<Tabs
+						defaultActiveKey='unanswered'
+						id='uncontrolled-tab-example'
+						className='mb-5'>
+						<Tab eventKey='unanswered' title='Unanswered'>
+							<Pools
+								header={`Unanswered Questions: ${unansweredQuestions.length}`}
+								questions={unansweredQuestions}></Pools>
+						</Tab>
+						<Tab eventKey='answered' title='Answered'>
+							<Pools
+								header={`Answered Questions: ${answeredQuestions.length}`}
+								questions={answeredQuestions}></Pools>
+						</Tab>
+					</Tabs>
 				</>
 			) : (
 				<SpinnerComponent />
