@@ -10,6 +10,10 @@ import type { AppDispatch } from '../../redux/store'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 
+import './Home.style.scss'
+
+import { css, cx } from '@emotion/css'
+
 import { SpinnerComponent } from '../index'
 interface Props {}
 
@@ -57,7 +61,7 @@ export const Home: React.FC<Props> = () => {
 					<Tabs
 						defaultActiveKey='unanswered'
 						id='uncontrolled-tab-example'
-						className='mb-3'>
+						className='mb-5'>
 						<Tab eventKey='unanswered' title='Unanswered'>
 							<Pools
 								header={`Unanswered Questions: ${unansweredQuestions.length}`}
