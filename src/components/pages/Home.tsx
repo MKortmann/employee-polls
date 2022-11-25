@@ -7,6 +7,9 @@ import { fetchUsers, getLoggedUser } from '../../redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch } from '../../redux/store'
 
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
+
 import { SpinnerComponent } from '../index'
 interface Props {}
 
@@ -51,8 +54,21 @@ export const Home: React.FC<Props> = () => {
 		<Container className='my-4'>
 			{componentStatus === 'idle' ? (
 				<>
-					<Pools header={'Unanswered'} questions={unansweredQuestions}></Pools>
-					<Pools header={'Answered'} questions={answeredQuestions}></Pools>
+					<Tabs
+						defaultActiveKey='unanswered'
+						id='uncontrolled-tab-example'
+						className='mb-3'>
+						<Tab eventKey='unanswered' title='Unanswered'>
+							<Pools
+								header={`Unanswered Questions: ${unansweredQuestions.length}`}
+								questions={unansweredQuestions}></Pools>
+						</Tab>
+						<Tab eventKey='answered' title='Answered'>
+							<Pools
+								header={`Answered Questions: ${answeredQuestions.length}`}
+								questions={answeredQuestions}></Pools>
+						</Tab>
+					</Tabs>
 				</>
 			) : (
 				<SpinnerComponent />
