@@ -48,6 +48,7 @@ export const Home: React.FC<Props> = () => {
 				console.log('No possible to fetch questions and/or users')
 			}
 		})()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return (

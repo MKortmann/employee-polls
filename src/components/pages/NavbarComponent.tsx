@@ -96,19 +96,6 @@ export const NavbarComponent: React.FC<Props> = () => {
 					{user?.[0]?.[1]?.name}
 				</Navbar.Brand>
 
-				{/* <NavLink
-					className={css`
-						margin-right: 30px;
-						text-decoration: none;
-						color: white;
-						:hover {
-							color: red;
-						}
-					`}
-					to={'/'}
-					onClick={() => goToLogin}>
-					Logout
-				</NavLink> */}
 				<Button
 					className={css`
 						margin-right: 30px;

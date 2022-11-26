@@ -42,8 +42,6 @@ export const AnsweredQuestion: React.FC<Props> = ({ qid }) => {
 		</Figure>
 	)
 
-	debugger
-
 	return (
 		<div>
 			<Row>
