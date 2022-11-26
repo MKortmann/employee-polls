@@ -17,8 +17,8 @@ export const NotFound = () => {
 			<Alert variant={'warning'}>Page not found!</Alert>
 			<Row md='auto' className='my-4 justify-content-md-center'>
 				{' '}
-				<Button variant='outline-primary' onClick={() => navigate('/')}>
-					Click to LogIn
+				<Button variant='outline-primary' onClick={() => navigate('/home')}>
+					Click to go to Home
 				</Button>
 			</Row>
 		</Container>
