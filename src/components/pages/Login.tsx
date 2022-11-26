@@ -14,7 +14,7 @@ import {
 } from '../../redux/slices/usersSlice'
 
 import type { AppDispatch } from '../../redux/store'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 interface Props {}
 
@@ -24,6 +24,7 @@ export const Login: React.FC<Props> = () => {
 
 	const users = useSelector(getUsers)
 	const status = useSelector(getUserStatus)
+	const location = useLocation()
 
 	useEffect(() => {
 		if (status === 'idle') {
@@ -33,7 +34,9 @@ export const Login: React.FC<Props> = () => {
 
 	const selectUser = (userId: string) => {
 		dispatch(updateLogUser(userId))
-		navigate('/home')
+		if (location.state != undefined && 'from' in location.state) {
+			navigate(location.state.from)
+		} else navigate('/home')
 	}
 
 	const usersOptions = Object.entries(users).map((user: any) => (

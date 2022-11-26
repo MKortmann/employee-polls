@@ -29,7 +29,7 @@ function App() {
 						loggedUser !== '' ? (
 							<Question key={Date.now()} />
 						) : (
-							<Navigate to='/' />
+							<Navigate to='/' state={{ from: '/questions/:id' }} />
 						)
 					}></Route>
 				<Route
@@ -38,7 +38,7 @@ function App() {
 						loggedUser !== '' ? (
 							<NewQuestion key={Date.now()} />
 						) : (
-							<Navigate to='/' />
+							<Navigate to='/' state={{ from: '/add' }} />
 						)
 					}></Route>
 				<Route
@@ -47,7 +47,7 @@ function App() {
 						loggedUser !== '' ? (
 							<Leaderboard key={Date.now()} />
 						) : (
-							<Navigate to='/' />
+							<Navigate to='/' state={{ from: '/leaderboard' }} />
 						)
 					}></Route>
 				<Route path='*' element={<NotFound />} />
