@@ -18,7 +18,7 @@ export const NotFound = () => {
 			<Row md='auto' className='my-4 justify-content-md-center'>
 				{' '}
 				<Button variant='outline-primary' onClick={() => navigate('/home')}>
-					Click to go to Home
+					Home
 				</Button>
 			</Row>
 		</Container>
