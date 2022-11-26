@@ -14,11 +14,12 @@ export const NotFound = () => {
 				margin-top: 25px;
 				margin-bottom: 50px;
 			`}>
+			<Alert variant={'warning'}>404</Alert>
 			<Alert variant={'warning'}>Page not found!</Alert>
 			<Row md='auto' className='my-4 justify-content-md-center'>
 				{' '}
 				<Button variant='outline-primary' onClick={() => navigate('/home')}>
-					Click to go to Home
+					Home
 				</Button>
 			</Row>
 		</Container>
