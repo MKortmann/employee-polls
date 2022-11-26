@@ -50,7 +50,15 @@ function App() {
 							<Navigate to='/' state={{ from: '/leaderboard' }} />
 						)
 					}></Route>
-				<Route path='*' element={<NotFound />} />
+				<Route
+					path={'*'}
+					element={
+						loggedUser !== '' ? (
+							<NotFound />
+						) : (
+							<Navigate to='/' state={{ from: '*' }} />
+						)
+					}></Route>
 			</Routes>
 		</div>
 	)
