@@ -1,16 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { _getUsers } from '../../API/_DATA'
-import { Users } from '../../types/users'
 
 import avatarSarahedo from '../../avatars/sarahedo.svg'
 import avatarTyler from '../../avatars/tylermcginnis.svg'
 import avatarMtsamis from '../../avatars/mtsamis.svg'
 import avatarZoshikanlu from '../../avatars/zoshikanlu.svg'
-
-interface State {
-	users: Users
-	status: string
-}
 
 const initialState: any = {
 	users: {},

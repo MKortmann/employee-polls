@@ -30,6 +30,7 @@ export const Login: React.FC<Props> = () => {
 		if (status === 'idle') {
 			dispatch(fetchUsers())
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const selectUser = (userId: string) => {

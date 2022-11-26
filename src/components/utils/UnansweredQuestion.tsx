@@ -35,8 +35,6 @@ export const UnansweredQuestion: React.FC<Props> = ({ qid }) => {
 
 	const avatar: any = getAvatar[question.author]
 
-	let status: string = 'idle'
-
 	const optionOne = async () => {
 		const answer = 'optionOne'
 
